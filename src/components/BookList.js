@@ -22,3 +22,5 @@ const BookList = () => {
     </table>
   );
 };
+
+export default BookList;
