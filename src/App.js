@@ -1,8 +1,19 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import Navbar from './components/Navbar';
 import BookList from './components/BookList.js';
 
 function App() {
+  const [books, setBooks] = useState([]);
+
+  useEffect(() => {
+    const getBooks = () => {
+      fetch('http://localhost:7000/api/books')
+        .then((res) => res.json())
+        .then((res) => setBooks(res));
+    };
+    getBooks();
+  }, []);
+
   return (
     <Fragment>
       <Navbar brand='LIbrary App' />
@@ -10,7 +21,7 @@ function App() {
         <div className='row'>
           <div className='col-7'>
             <h2 style={{ textAlign: 'center' }}>Book List</h2>
-            <BookList />
+            <BookList books={books} />
           </div>
           <div className='col-5'>
             <h2 style={{ textAlign: 'center' }}>Book Form</h2>
