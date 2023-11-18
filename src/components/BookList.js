@@ -1,6 +1,6 @@
 import React from 'react';
 
-const BookList = () => {
+export const BookList = ({ books }) => {
   return (
     <table className='table'>
       <thead>
@@ -12,15 +12,17 @@ const BookList = () => {
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Author</th>
-          <th>Edition</th>
-        </tr>
+        {books.map((book) => (
+          <tr key={book.id}>
+            <th>{book.id}</th>
+            <th>{book.title}</th>
+            <th>{book.author}</th>
+            <th>{book.edition}</th>
+          </tr>
+        ))}
       </tbody>
     </table>
   );
 };
 
-export default BookList;
+//export default BookList;

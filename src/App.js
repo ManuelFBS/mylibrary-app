@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import Navbar from './components/Navbar';
-import BookList from './components/BookList.js';
+import { Navbar } from './components/Navbar';
+import { BookList } from './components/BookList.js';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -9,7 +9,7 @@ function App() {
     const getBooks = () => {
       fetch('http://localhost:7000/api/books')
         .then((res) => res.json())
-        .then((res) => setBooks(res));
+        .then((res) => setBooks(res.data || []));
     };
     getBooks();
   }, []);
