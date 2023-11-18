@@ -3,12 +3,25 @@ import React from 'react';
 export const Form = ({ book, setBook }) => {
   const handleChange = (e) => {
     setBook({
+      ...book,
       [e.target.name]: e.target.value
     });
   };
 
+  let { title, author, edition } = book;
+
+  const handleSubmit = (e) => {
+    edition = parseInt(edition, 10);
+
+    // Validación de los datos...
+    if (title === '' || author === '' || edition <= 0) {
+      alert('Todos los campos son obligatorios...');
+      return;
+    }
+  };
+
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className='mb-3'>
         <label htmlFor='title' className='form-label'>
           Title
@@ -45,7 +58,9 @@ export const Form = ({ book, setBook }) => {
           className='form-control'
         />
       </div>
-      <button className='btn btn-primary'>Submit</button>
+      <button type='submit' className='btn btn-primary'>
+        Submit
+      </button>
     </form>
   );
 };
