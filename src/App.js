@@ -1,6 +1,6 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import { Navbar } from './components/Navbar';
-import { BookList } from './components/BookList.js';
+import { Navbar } from './components/NavBar/Navbar.js';
+import { BookList } from './components/BookList/BookList.js';
 
 function App() {
   const [books, setBooks] = useState([]);
