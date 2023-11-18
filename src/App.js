@@ -1,6 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Navbar } from './components/NavBar/Navbar.js';
 import { BookList } from './components/BookList/BookList.js';
+import { Form } from './components/Form/Form.js';
 
 function App() {
   const [books, setBooks] = useState([]);
@@ -25,6 +26,7 @@ function App() {
           </div>
           <div className='col-5'>
             <h2 style={{ textAlign: 'center' }}>Book Form</h2>
+            <Form />
           </div>
         </div>
       </div>
