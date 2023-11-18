@@ -1,25 +1,49 @@
 import React from 'react';
 
-export const Form = () => {
+export const Form = ({ book, setBook }) => {
+  const handleChange = (e) => {
+    setBook({
+      [e.target.name]: e.target.value
+    });
+  };
+
   return (
     <form>
       <div className='mb-3'>
         <label htmlFor='title' className='form-label'>
           Title
         </label>
-        <input type='text' id='title' className='form-control' />
+        <input
+          name='title'
+          onChange={handleChange}
+          type='text'
+          id='title'
+          className='form-control'
+        />
       </div>
       <div className='mb-3'>
         <label htmlFor='author' className='form-label'>
           Author
         </label>
-        <input type='text' id='author' className='form-control' />
+        <input
+          name='author'
+          onChange={handleChange}
+          type='text'
+          id='author'
+          className='form-control'
+        />
       </div>
       <div className='mb-3'>
         <label htmlFor='edition' className='form-label'>
           Edition
         </label>
-        <input type='text' id='edition' className='form-control' />
+        <input
+          name='edition'
+          onChange={handleChange}
+          type='text'
+          id='edition'
+          className='form-control'
+        />
       </div>
       <button className='btn btn-primary'>Submit</button>
     </form>

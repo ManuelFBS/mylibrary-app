@@ -4,6 +4,12 @@ import { BookList } from './components/BookList/BookList.js';
 import { Form } from './components/Form/Form.js';
 
 function App() {
+  const [book, setBook] = useState({
+    title: '',
+    author: '',
+    edition: 0
+  });
+
   const [books, setBooks] = useState([]);
 
   useEffect(() => {
@@ -26,7 +32,7 @@ function App() {
           </div>
           <div className='col-5'>
             <h2 style={{ textAlign: 'center' }}>Book Form</h2>
-            <Form />
+            <Form book={book} setBook={setBook} />
           </div>
         </div>
       </div>
