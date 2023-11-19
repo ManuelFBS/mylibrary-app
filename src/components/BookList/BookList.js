@@ -70,7 +70,7 @@ export const BookList = ({ book, setBook, books, setListBooksUpdated }) => {
               <div className='mb-3'>
                 <button
                   onClick={() => handleUpdate(book.id)}
-                  className='btn btn-dark'
+                  className='btn btn-success'
                 >
                   Update
                 </button>
