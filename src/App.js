@@ -21,6 +21,7 @@ function App() {
         .then((res) => setBooks(res.data || []));
     };
     getBooks();
+    setListBooksUpdated(false);
   }, [listBooksUpdated]);
 
   return (
