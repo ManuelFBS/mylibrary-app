@@ -1,6 +1,16 @@
 import React from 'react';
 
 export const BookList = ({ books }) => {
+  const hanDelete = (id) => {
+    const requestInit = {
+      method: 'DELETE'
+    };
+
+    fetch('http://localhost:7000/api/books/del/' + id, requestInit)
+      .then((res) => res.json)
+      .then((res) => console.log(res));
+  };
+
   return (
     <table className='table'>
       <thead>
@@ -14,10 +24,20 @@ export const BookList = ({ books }) => {
       <tbody>
         {books.map((book) => (
           <tr key={book.id}>
-            <th>{book.id}</th>
-            <th>{book.title}</th>
-            <th>{book.author}</th>
-            <th>{book.edition}</th>
+            <td>{book.id}</td>
+            <td>{book.title}</td>
+            <td>{book.author}</td>
+            <td>{book.edition}</td>
+            <td>
+              <div className='mb-3'>
+                <button
+                  onClick={() => hanDelete(book.id)}
+                  className='btn btn-danger'
+                >
+                  Delete
+                </button>
+              </div>
+            </td>
           </tr>
         ))}
       </tbody>
