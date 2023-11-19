@@ -1,6 +1,6 @@
 import React from 'react';
 
-export const BookList = ({ books }) => {
+export const BookList = ({ books, setListBooksUpdated }) => {
   const handleDelete = (id) => {
     const requestInit = {
       method: 'DELETE'
@@ -9,6 +9,8 @@ export const BookList = ({ books }) => {
     fetch('http://localhost:7000/api/books/del/' + id, requestInit)
       .then((res) => res.json)
       .then((res) => console.log(res));
+
+    setListBooksUpdated(true);
   };
 
   return (
