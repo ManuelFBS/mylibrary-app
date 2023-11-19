@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const BookList = ({ books }) => {
-  const hanDelete = (id) => {
+  const handleDelete = (id) => {
     const requestInit = {
       method: 'DELETE'
     };
@@ -31,7 +31,7 @@ export const BookList = ({ books }) => {
             <td>
               <div className='mb-3'>
                 <button
-                  onClick={() => hanDelete(book.id)}
+                  onClick={() => handleDelete(book.id)}
                   className='btn btn-danger'
                 >
                   Delete
