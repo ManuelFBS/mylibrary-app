@@ -33,6 +33,7 @@ function App() {
             <h2 style={{ textAlign: 'center' }}>Book List</h2>
             <BookList
               book={book}
+              setBook={setBook}
               books={books}
               setListBooksUpdated={setListBooksUpdated}
             />
