@@ -12,6 +12,8 @@ function App() {
 
   const [books, setBooks] = useState([]);
 
+  const [listBooksUpdated, setListBooksUpdated] = useState(false);
+
   useEffect(() => {
     const getBooks = () => {
       fetch('http://localhost:7000/api/books')
@@ -28,7 +30,7 @@ function App() {
         <div className='row'>
           <div className='col-7'>
             <h2 style={{ textAlign: 'center' }}>Book List</h2>
-            <BookList books={books} />
+            <BookList books={books} setListBooksUpdated={setListBooksUpdated} />
           </div>
           <div className='col-5'>
             <h2 style={{ textAlign: 'center' }}>Book Form</h2>
