@@ -1,12 +1,26 @@
 import React from 'react';
 
-export const BookList = ({ books, setListBooksUpdated }) => {
+export const BookList = ({ book, books, setListBooksUpdated }) => {
   const handleDelete = (id) => {
     const requestInit = {
       method: 'DELETE'
     };
 
     fetch('http://localhost:7000/api/books/del/' + id, requestInit)
+      .then((res) => res.json)
+      .then((res) => console.log(res));
+
+    setListBooksUpdated(true);
+  };
+
+  const handleUpdate = (id) => {
+    const requestInit = {
+      method: 'PATCH',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(book)
+    };
+
+    fetch('http://localhost:7000/api/books/update/' + id, requestInit)
       .then((res) => res.json)
       .then((res) => console.log(res));
 
@@ -37,6 +51,16 @@ export const BookList = ({ books, setListBooksUpdated }) => {
                   className='btn btn-danger'
                 >
                   Delete
+                </button>
+              </div>
+            </td>
+            <td>
+              <div className='mb-3'>
+                <button
+                  onClick={() => handleUpdate(book.id)}
+                  className='btn btn-dark'
+                >
+                  Update
                 </button>
               </div>
             </td>
