@@ -21,7 +21,7 @@ function App() {
         .then((res) => setBooks(res.data || []));
     };
     getBooks();
-  }, []);
+  }, [listBooksUpdated]);
 
   return (
     <Fragment>
