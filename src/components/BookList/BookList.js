@@ -14,10 +14,15 @@ export const BookList = ({ book, setBook, books, setListBooksUpdated }) => {
   };
 
   const handleUpdate = (id) => {
+    // Se filtran solo los campos que tienen valores en el objeto 'book'...
+    const updatedFields = Object.fromEntries(
+      Object.entries(book).filter(([key, value]) => value !== '')
+    );
+
     const requestInit = {
       method: 'PATCH',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(book)
+      body: JSON.stringify(updatedFields)
     };
 
     fetch('http://localhost:7000/api/books/update/' + id, requestInit)
