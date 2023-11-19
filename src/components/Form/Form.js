@@ -10,7 +10,7 @@ export const Form = ({ book, setBook }) => {
 
   let { title, author, edition } = book;
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     edition = parseInt(edition, 10);
 
     // Validación de los datos...
@@ -18,6 +18,24 @@ export const Form = ({ book, setBook }) => {
       alert('Todos los campos son obligatorios...');
       return;
     }
+
+    // Consulta...
+    const requestInit = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(book)
+    };
+
+    fetch('http://localhost:7000/api/books/create', requestInit)
+      .then((res) => res.json())
+      .then((res) => console.log(res));
+
+    // Reiniciando state del libro (book)...
+    setBook({
+      title: '',
+      author: '',
+      edition: 0
+    });
   };
 
   return (
@@ -51,6 +69,7 @@ export const Form = ({ book, setBook }) => {
           Edition
         </label>
         <input
+          value={edition}
           name='edition'
           onChange={handleChange}
           type='text'
